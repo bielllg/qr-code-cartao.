@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react';
 import { ShineButton } from './components/lightswind/ShineButton';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { AuroraTextEffect } from './components/AuroraTextEffect';
+import backgroundVideo from './assets/background.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,54 +149,17 @@ function App() {
         ref={pinnedRef}
         className="relative h-screen w-full overflow-hidden"
       >
-        {/* ── Camada 0: Shader Gradient Background ── */}
+        {/* ── Camada 0: Video Background ── */}
         <div className="absolute inset-0 z-0">
-          <ShaderGradientCanvas
-            className="h-full w-full"
-            style={{ position: 'absolute', top: 0 }}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
           >
-            <ShaderGradient
-              animate="on"
-              axesHelper="off"
-              brightness={1.2}
-              cAzimuthAngle={180}
-              cDistance={3.6}
-              cPolarAngle={90}
-              cameraZoom={1}
-              color1="#ff5005"
-              color2="#dbb45a"
-              color3="#445be1"
-              destination="onCanvas"
-              embedMode="off"
-              envPreset="city"
-              format="gif"
-              fov={45}
-              frameRate={10}
-              gizmoHelper="hide"
-              grain="on"
-              lightType="3d"
-              pixelDensity={1}
-              positionX={-1.4}
-              positionY={0}
-              positionZ={0}
-              range="disabled"
-              rangeEnd={40}
-              rangeStart={0}
-              reflection={0.1}
-              rotationX={0}
-              rotationY={10}
-              rotationZ={50}
-              shader="defaults"
-              type="plane"
-              uAmplitude={1}
-              uDensity={1.3}
-              uFrequency={5.5}
-              uSpeed={0.4}
-              uStrength={4}
-              uTime={0}
-              wireframe={false}
-            />
-          </ShaderGradientCanvas>
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
         </div>
 
         {/* ── Camada 1: Overlay de blur/tom escuro ── */}
